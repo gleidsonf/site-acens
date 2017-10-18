@@ -3,8 +3,6 @@
 <html lang="pt-br">
 
 <head>
-
-
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Acens</title>
@@ -58,6 +56,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#main-navbar">
+
 	<!-- Add class="boxed" to boxed layout -->
 	<div class="page-loader"></div>
 	<!-- Display loading image while page loads -->
@@ -68,6 +67,7 @@
 			<!--====================
 				///// BEGIN HEADER /////
 				========================-->
+
 			<header id="header" class="header-main">
 
 				<!-- Begin Navbar -->
@@ -132,7 +132,7 @@
 								<a class="btn btn-main btn-lg page-scroll" href="#about-section" role="button">Começar!</a>
 							</div>
 							<div class="item">
-								<h1>Mais de 8 anos no mercado</h1>
+								<h1>Mais de 9 anos no mercado</h1>
 								<h3>Desenvolvendo sites e soluções web</h3>
 								<div class="more-space-m"></div>
 								<a class="btn btn-main btn-lg page-scroll" href="#services-section" role="button">Veja nossos serviços</a>
@@ -422,71 +422,89 @@
 				</div>
 			</section>
 			<!-- Begin section blog -->
-			<section id="blog" class="page blog">
-				<!-- Begin page header-->
-				<div class="page-header-wrapper">
-					<div class="container">
-						<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-							<h1>Últimas <span class="text-main">Notícias</span></h1>
-							<div class="divider divider-icon divider-md">//</div>
-							<p class="lead text-gray">
-								Acompanhe aqui as últimas notícias relacionadas à tecnologias úteis para auxilar seu negócio, assuntos referentes à computação e demais notícias sobre a Acens.
-							</p>
-						</div>
-					</div>
-				</div>
-				<!-- End page header-->
-				<div class="container-fluid">
-					<div id="owl-blog" class="owl-carousel owl-blog">
-						<div class="blog-box wow zoomIn" data-wow-delay="0.5s">
-							<div class="thumbnail">
-								<div class="blog-image">
-									<a href="processo-seletivo-2017-2.html">
-											<img src="{% static 'img/blog/ProcessoSeletivoabertura2017.png' %}" alt="Processo seletivo Acens 2017.2">
-											<div class="cover"><div class="cover-inner"></div></div>
-										</a>
+							<section id="blog" class="page blog">
+								<!-- Begin page header-->
+								<div class="page-header-wrapper">
+									<div class="container">
+										<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
+											<h1>Últimas <span class="text-main">Notícias</span></h1>
+											<div class="divider divider-icon divider-md">//</div>
+											<p class="lead text-gray">
+												Acompanhe aqui as últimas notícias relacionadas à tecnologias úteis para auxilar seu negócio, assuntos referentes à computação e demais notícias sobre a Acens.
+											</p>
+										</div>
+									</div>
 								</div>
-								<div class="caption text-center">
-									<div class="caption-tag"><i class="fa fa-pencil"></i></div>
-									<a class="title" href="processo-seletivo-2017-2.html"><h5>Aberto processo seletivo!!</h5></a>
-									<p>Está liberado o edital e formulário de inscrição para o processo seletivo 2017.2. #goacens</p>
-									<p><a href="processo-seletivo-2017-2.html">Leia mais</a></p>
+
+								<!-- End page header-->
+								<div class="container-fluid">
+									<div id="blog" class="owl-carousel owl-blog">
+										<div class="blog-box wow zoomIn" data-wow-delay="0.5s">
+											<div class="thumbnail">
+												<div class="img-wrapper">
+{% block blog %}
+{% for post in posts%}
+						          <div class="col-xs-12 col-sm-6 col-md-12">
+						          <div class="thumbnail" style="width: 300px;">
+						            <div class="img-wrapper">
+						              <img src="{{ post.photo_url }}" alt="" class="img-responsive">
+						            </div>
+						              <div class="caption">
+						                <h4><a href="{% url 'post_detail' pk=post.pk %}" >{{ post.title }}</a></h4>
+						                <div class="comment">
+						                  <ul class ="list-group">
+						                    <li class="list-group-item" style = "font-size: 12px;>
+						                      <i class="fa fa-calendar-check-o"</i><span>{{ post.created_date }}</span>
+						                    </li>
+						                    <li class = "list-group-item" style = "font-size: 12px;">
+						                      <i class="fa fa-user"></i><span> Postado por: {{ post.author }}</span>
+						                    </li>
+						                  </ul>
+						                </div>
+						              <p class="all">{{ post.text|striptags|safe|slice:":100" }} (...)</p>
+						              <p class="submit"><a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Leia mais</a></p>
+						              </div>
+						          </div>
+						        </div>
+{% endfor %}
+{% endblock blog %}
+
+											</div>
+										</div>
+
+									</div>
+									<!-- /.owl-carousel -->
+
+									<div class="more-space-m"></div>
+
+									<!-- Begin view-more button -->
+									<div class="view-more text-center hidden">
+										<a href="#" class="btn btn-main btn-lg wow bounceInUp" data-wow-delay="0.1s" role="button">View all entries..</a>
+									</div>
+									<!-- End view-more button -->
 								</div>
-							</div>
-						</div>
+								<!-- /.container -->
 
-					</div>
-					<!-- /.owl-carousel -->
+							</section>
+							<!-- End section blog -->
 
-					<div class="more-space-m"></div>
+							<!-- Begin team section -->
+							<section id="team-section" class="page">
 
-					<!-- Begin view-more button -->
-					<div class="view-more text-center hidden">
-						<a href="#" class="btn btn-main btn-lg wow bounceInUp" data-wow-delay="0.1s" role="button">View all entries..</a>
-					</div>
-					<!-- End view-more button -->
-				</div>
-				<!-- /.container -->
+								<!-- Begin page header-->
+								<div class="page-header-wrapper">
+									<div class="container">
+										<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
+											<h1>A <span class="text-main">Equipe</span></h1>
+											<div class="divider divider-icon divider-md">//</div>
+											<p class="lead text-gray">
+												Contamos com uma equipe capacitada e apaixonada pelo o que faz,<br>utilizando das tecnologias mais recentes do mercado.
+											</p>
+										</div>
+									</div>
+								</div>
 
-			</section>
-			<!-- End section blog -->
-
-			<!-- Begin team section -->
-			<section id="team-section" class="page">
-
-				<!-- Begin page header-->
-				<div class="page-header-wrapper">
-					<div class="container">
-						<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-							<h1>A <span class="text-main">Equipe</span></h1>
-							<div class="divider divider-icon divider-md">//</div>
-							<p class="lead text-gray">
-								Contamos com uma equipe capacitada e apaixonada pelo o que faz,<br>utilizando das tecnologias mais recentes do mercado.
-							</p>
-						</div>
-					</div>
-				</div>
-				<!-- End page header-->
+								<!-- End page header-->
 
 				<!-- Begin team -->
 				<div class="container-fluid">
@@ -764,7 +782,7 @@
 					<div class="page-header-wrapper">
 						<div class="container">
 							<div class="page-header text-center wow bounceInDown" data-wow-delay="0.3s">
-								<h1>Contate <span class="text-main">Nos</span></h1>
+								<h1>Contate-<span class="text-main">Nos</span></h1>
 								<div class="divider divider-md divider-icon divider-white">//</div>
 								<p class="lead">
 									Pronto para sua nova aquisição? Alguma dúvida? Entre em contato conosco,<br>estamos ansiosos para resolver seu problema!
@@ -794,6 +812,13 @@
 												<textarea id="message" class="form-control input-lg" rows="5" placeholder="Mensagem" required="" name="message"></textarea>
 											</div>
 											<button type="submit" class="btn btn-blank btn-lg wow bounceInRight" data-wow-delay="0.8s">Enviar</button>
+<br><br>
+			<h4>Receba as <span class="text-main">Novidades</span></h4>
+			<div class="form-group">
+				<input id="email" type="email" class="form-control input-lg" placeholder="Insira seu e-mail" required="" name="email">
+			</div>
+			<button type="submit" class="btn btn-blank btn-lg wow bounceInRight" data-wow-delay="0.8s">Cadastrar</button>
+
 										</form>
 									</div>
 								</div>
@@ -809,7 +834,11 @@
 											<i class="fa fa-phone"></i> (85) 9.8551-1726
 										</address>
 										<address>
-											<i class="fa fa-envelope"></i> <a href="mailto:contato.acens@gmail.com">contato.acens@gmail.com.br</a>
+											<i class="fa fa-envelope"></i> <a href="mailto:contato.acens@gmail.com">contato.acens@gmail.com</a><br><br>
+											<i class="fa fa-facebook"></i> <a href="https://www.facebook.com/acensjunior">Facebook.com/acensjunior</a><br><br>
+											<i class="fa fa-instagram"></i> <a href="https://www.instagram.com/acensjrr">Instagram.com/acensjr</a><br><br>
+											<i class="fa fa-book"></i> <a href="https://www.uece.br">Universidade Estadual do Ceará</a><br><br>
+
 										</address>
 									</div>
 								</div>
@@ -862,6 +891,7 @@
 							<div class="text-center">
 								<div>
 									<a href="https://www.facebook.com/acensjunior/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+									<a href="https://www.instagram.com/acensjr/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
 									<div>
 									</div>
 								</div>
