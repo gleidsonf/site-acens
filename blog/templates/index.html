@@ -120,10 +120,10 @@
 
 						<div id="owl-intro-text" class="owl-carousel">
 							<div class="item">
-								<h1>Aberto processo seletivo 2017.2</h1>
+								<h1>{{posts.last.title}}</h1>
 								<h3>Já está rolando o período de inscrições, não perca tempo!</h3>
 								<div class="more-space-m"></div>
-								<a class="btn btn-main btn-lg page-scroll" href="processo-seletivo-2017-2.html" role="button">Começar!</a>
+								<a class="btn btn-main btn-lg page-scroll" href="{% url 'post_detail' posts.last.pk %}" role="button">Começar!</a>
 							</div>
 							<div class="item">
 								<h1>Acens</h1>
@@ -422,89 +422,74 @@
 				</div>
 			</section>
 			<!-- Begin section blog -->
-							<section id="blog" class="page blog">
-								<!-- Begin page header-->
-								<div class="page-header-wrapper">
-									<div class="container">
-										<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-											<h1>Últimas <span class="text-main">Notícias</span></h1>
-											<div class="divider divider-icon divider-md">//</div>
-											<p class="lead text-gray">
-												Acompanhe aqui as últimas notícias relacionadas à tecnologias úteis para auxilar seu negócio, assuntos referentes à computação e demais notícias sobre a Acens.
-											</p>
-										</div>
+			<section id="blog" class="page blog">
+				<!-- Begin page header-->
+				<div class="page-header-wrapper">
+					<div class="container">
+						<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
+							<h1>Últimas <span class="text-main">Notícias</span></h1>
+							<div class="divider divider-icon divider-md">//</div>
+							<p class="lead text-gray">
+								Acompanhe aqui as últimas notícias relacionadas à tecnologias úteis para auxilar seu negócio, assuntos referentes à computação e demais notícias sobre a Acens.
+							</p>
+						</div>
+					</div>
+				</div>
+				<!-- End page header-->
+				<div class="container-fluid">
+					<div id="owl-blog" class="owl-carousel owl-blog">
+						{% for post in posts %}
+							<div class="blog-box wow zoomIn" data-wow-delay="0.5s">
+								<div class="thumbnail">
+									<div class="blog-image">
+										<a href="processo-seletivo-2017-2.html">
+												<img src="img/blog/ProcessoSeletivoabertura2017.png" alt="Processo seletivo Acens 2017.2">
+												<div class="cover"><div class="cover-inner"></div></div>
+											</a>
+									</div>
+									<div class="caption text-center">
+										<div class="caption-tag"><i class="fa fa-pencil"></i></div>
+										<a class="title" href="processo-seletivo-2017-2.html"><h5>{{ post.title}}</h5></a>
+										<p>{{ post.text|striptags|safe|slice:":100" }} (...)</p>
+										<p><a href="{% url 'post_detail' post.pk %}">Leia mais</a></p>
 									</div>
 								</div>
+							</div>
+						{% endfor %}
 
-								<!-- End page header-->
-								<div class="container-fluid">
-									<div id="blog" class="owl-carousel owl-blog">
-										<div class="blog-box wow zoomIn" data-wow-delay="0.5s">
-											<div class="thumbnail">
-												<div class="img-wrapper">
-{% block blog %}
-{% for post in posts%}
-						          <div class="col-xs-12 col-sm-6 col-md-12">
-						          <div class="thumbnail" style="width: 300px;">
-						            <div class="img-wrapper">
-						              <img src="{{ post.photo_url }}" alt="" class="img-responsive">
-						            </div>
-						              <div class="caption">
-						                <h4><a href="{% url 'post_detail' pk=post.pk %}" >{{ post.title }}</a></h4>
-						                <div class="comment">
-						                  <ul class ="list-group">
-						                    <li class="list-group-item" style = "font-size: 12px;>
-						                      <i class="fa fa-calendar-check-o"</i><span>{{ post.created_date }}</span>
-						                    </li>
-						                    <li class = "list-group-item" style = "font-size: 12px;">
-						                      <i class="fa fa-user"></i><span> Postado por: {{ post.author }}</span>
-						                    </li>
-						                  </ul>
-						                </div>
-						              <p class="all">{{ post.text|striptags|safe|slice:":100" }} (...)</p>
-						              <p class="submit"><a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Leia mais</a></p>
-						              </div>
-						          </div>
-						        </div>
-{% endfor %}
-{% endblock blog %}
+					</div>
+					<!-- /.owl-carousel -->
 
-											</div>
-										</div>
+					<div class="more-space-m"></div>
 
-									</div>
-									<!-- /.owl-carousel -->
+					<!-- Begin view-more button -->
+					<div class="view-more text-center hidden">
+						<a href="#" class="btn btn-main btn-lg wow bounceInUp" data-wow-delay="0.1s" role="button">View all entries..</a>
+					</div>
+					<!-- End view-more button -->
+				</div>
+				<!-- /.container -->
 
-									<div class="more-space-m"></div>
+			</section>
+			<!-- End section blog -->
 
-									<!-- Begin view-more button -->
-									<div class="view-more text-center hidden">
-										<a href="#" class="btn btn-main btn-lg wow bounceInUp" data-wow-delay="0.1s" role="button">View all entries..</a>
-									</div>
-									<!-- End view-more button -->
-								</div>
-								<!-- /.container -->
+			<!-- Begin team section -->
+			<section id="team-section" class="page">
 
-							</section>
-							<!-- End section blog -->
+				<!-- Begin page header-->
+				<div class="page-header-wrapper">
+					<div class="container">
+						<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
+							<h1>A <span class="text-main">Equipe</span></h1>
+							<div class="divider divider-icon divider-md">//</div>
+							<p class="lead text-gray">
+								Contamos com uma equipe capacitada e apaixonada pelo o que faz,<br>utilizando das tecnologias mais recentes do mercado.
+							</p>
+						</div>
+					</div>
+				</div>
 
-							<!-- Begin team section -->
-							<section id="team-section" class="page">
-
-								<!-- Begin page header-->
-								<div class="page-header-wrapper">
-									<div class="container">
-										<div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-											<h1>A <span class="text-main">Equipe</span></h1>
-											<div class="divider divider-icon divider-md">//</div>
-											<p class="lead text-gray">
-												Contamos com uma equipe capacitada e apaixonada pelo o que faz,<br>utilizando das tecnologias mais recentes do mercado.
-											</p>
-										</div>
-									</div>
-								</div>
-
-								<!-- End page header-->
+				<!-- End page header-->
 
 				<!-- Begin team -->
 				<div class="container-fluid">
