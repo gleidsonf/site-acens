@@ -444,13 +444,13 @@
 								<div class="thumbnail">
 									<div class="blog-image">
 										<a href="processo-seletivo-2017-2.html">
-												<img src="img/blog/ProcessoSeletivoabertura2017.png" alt="Processo seletivo Acens 2017.2">
+												<img src="{{post.photo_url}}" alt="Processo seletivo Acens 2017.2">
 												<div class="cover"><div class="cover-inner"></div></div>
 											</a>
 									</div>
 									<div class="caption text-center">
 										<div class="caption-tag"><i class="fa fa-pencil"></i></div>
-										<a class="title" href="processo-seletivo-2017-2.html"><h5>{{ post.title}}</h5></a>
+										<a class="title" href="{% url 'post_detail' post.pk %}"><h5>{{ post.title}}</h5></a>
 										<p>{{ post.text|striptags|safe|slice:":100" }} (...)</p>
 										<p><a href="{% url 'post_detail' post.pk %}">Leia mais</a></p>
 									</div>
