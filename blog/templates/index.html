@@ -2,6 +2,7 @@
 {% load staticfiles %}
 	{% block index %}
 			<!-- Begin text carousel intro section -->
+
 			<section id="text-carousel-intro-section" class="parallax" data-stellar-background-ratio="0.5" style="background-image: url({% static 'img/intro-bg/intro-bg-5.jpg' %});">
 
 
@@ -332,7 +333,7 @@
 							<div class="blog-box wow zoomIn" data-wow-delay="0.5s">
 								<div class="thumbnail">
 									<div class="blog-image">
-										<a href="processo-seletivo-2017-2.html">
+										<a href="{% url 'post_detail' post.pk %}">
 												<img src="{{post.photo_url}}" alt="Processo seletivo Acens 2017.2">
 												<div class="cover"><div class="cover-inner"></div></div>
 											</a>
@@ -348,6 +349,16 @@
 						{% endfor %}
 
 					</div>
+					<div class = "subscribe_form container">
+							<p class="text-center lead text-gray">Fique por dentro de promoções, conteúdo e mais!!</p>
+							<div class="row">
+								<form id = "subscribe" form method = 'POST'>{% csrf_token %}
+									<input id = "email_id"  class="input-lg col-md-offset-3 col-md-4 col-xs-12" type="email" name = "email_id" required placeholder="seu@email.com">
+									<button type="submit" class="btn btn-blank btn-lg wow bounceInRight col-md-2 col-xs-12" value = "Inscreva-se" id = "email_submit">Inscreva-se</button>
+								</form>
+							</div>
+					</div>
+
 					<!-- /.owl-carousel -->
 
 					<div class="more-space-m"></div>
@@ -419,7 +430,7 @@
 
 										<a class="title" href="#"></a>
 
-										<p><p>Pedro Vitor Misquita</p></p>
+										<p>Pedro Vitor Misquita</p>
 
 									</div>
 								</div>
@@ -443,7 +454,7 @@
 
 										<a class="title" href="#"></a>
 
-										<p><p>Gleidson Silva</p></p>
+										<p>Gleidson Silva</p>
 
 									</div>
 								</div>
@@ -669,6 +680,7 @@
 
 				<div class="contact wow bounceInRight" data-wow-delay="0.4s">
 					<div class="container">
+
 						<div class="row">
 
 							<div class="col-md-6">
@@ -767,12 +779,10 @@
 								<div>
 									<a href="https://www.facebook.com/acensjunior/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
 									<a href="https://www.instagram.com/acensjr/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-									<div>
-									</div>
+								</div>
 								</div>
 							</div>
 						</div>
-					</div>
 				</footer>
 				<!-- End footer section -->
 

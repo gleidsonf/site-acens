@@ -25,3 +25,11 @@ class Post(models.Model):
     def photo_url(self):
         if self.photo and hasattr(self.photo, 'url'):
             return self.photo.url
+
+
+class Subscribe(models.Model):
+    email_id = models.EmailField(null = True, blank = True)
+    timestamp = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.email_id

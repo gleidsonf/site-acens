@@ -6,3 +6,13 @@
 .post img {
   max-width: 600px;
 }
+
+#email_id {
+  margin-right: 10px;
+}
+
+#subscribe input,
+#subscribe button {
+  margin-right: 5px;
+  height: 46px;
+}
