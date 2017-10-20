@@ -1,3 +1,5 @@
+$('.post img').addClass('img-responsive');
+
 $(document).on('submit', '#form_contact', function(e) {
   e.preventDefault();
 

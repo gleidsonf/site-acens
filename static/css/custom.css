@@ -1,8 +1,8 @@
 /* Add here all your CSS customizations */
-#post {
+.post {
   margin-top: 50px;
 }
 
-#post .img-post {
+.post img {
   max-width: 600px;
 }
