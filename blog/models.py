@@ -7,7 +7,10 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey(
+	'auth.User',
+        on_delete=models.CASCADE,
+    )
     title = models.CharField(max_length=100)
     photo = models.ImageField(upload_to = 'pic_folder/', default = 'pic_folder/no-image.png')
     text = RichTextUploadingField(config_name='awesome_ckeditor') #RichTextField(config_name='awesome_ckeditor',null=True,blank=True)
